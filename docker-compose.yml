@@ -1,9 +1,11 @@
 version: '2'
 services:
-  novnc:
+  myapp:
+    image: jupyter:scipy-notebook
+    user: 'jovyan'
     build: .
     volumes:
-      - .:/root
+      - .:/home/jovyan/work
     environment:
       # Adjust to your screen size
       - DISPLAY_WIDTH=1366
@@ -16,7 +18,7 @@ services:
     - /dev/null:/dev/null
     privileged: true
     ports:
-      - "8080:8080"
+      - "8888:8888"
     networks:
       - x11
 networks:
